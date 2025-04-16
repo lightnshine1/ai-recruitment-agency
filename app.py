@@ -1,9 +1,9 @@
-# app.py — AI Recruitment Bureau Prototype (met open-source LLM)
+# app.py — AI Recruitment Bureau Prototype (met HuggingFaceEndpoint)
 
 from flask import Flask, render_template, request
 import os
 from crewai import Crew, Agent, Task
-from langchain_community.llms import HuggingFaceHub
+from langchain_huggingface import HuggingFaceEndpoint
 from PIL import Image
 import requests
 import io
@@ -15,17 +15,18 @@ load_dotenv()
 # Setup Flask
 app = Flask(__name__)
 
-# Configureer HuggingFace LLM (gratis open-source model)
+# Configureer HuggingFace Endpoint LLM
 huggingface_api_key = os.getenv("HUGGINGFACEHUB_API_TOKEN")
-llm = HuggingFaceHub(
+llm = HuggingFaceEndpoint(
     repo_id="HuggingFaceH4/zephyr-7b-beta",
-    model_kwargs={"temperature": 0.5, "max_new_tokens": 512},
+    task="text-generation",
+    temperature=0.5,
+    max_new_tokens=512,
     huggingfacehub_api_token=huggingface_api_key
 )
 
 # Functie om een placeholder afbeelding te genereren (geen DALL-E zonder OpenAI)
 def generate_visual(prompt):
-    # Alternatief: toon een standaard placeholder image
     return "https://via.placeholder.com/512x512.png?text=AI+Visual"
 
 @app.route('/', methods=['GET', 'POST'])
