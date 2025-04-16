@@ -2,7 +2,7 @@
 
 from flask import Flask, render_template, request
 import os
-from crewai import Crew, Agent, Task
+from crewai import Crew, Agent, Task, CrewLLMConfig
 from langchain_huggingface import HuggingFaceEndpoint
 from PIL import Image
 import requests
@@ -23,6 +23,13 @@ llm = HuggingFaceEndpoint(
     temperature=0.5,
     max_new_tokens=512,
     huggingfacehub_api_token=huggingface_api_key
+)
+
+llm_config = CrewLLMConfig(
+    llm=llm,
+    config={
+        "provider": "huggingface"
+    }
 )
 
 # Functie om een placeholder afbeelding te genereren (geen DALL-E zonder OpenAI)
@@ -115,7 +122,8 @@ def index():
         crew = Crew(
             agents=[strategic_director, recruiter, copywriter, campaign_manager, graphic_designer],
             tasks=[job_analysis, write_job_post, plan_campaign, generate_visual_task, overview_task],
-            verbose=True
+            verbose=True,
+            llm_config=llm_config
         )
 
         result = crew.kickoff()
