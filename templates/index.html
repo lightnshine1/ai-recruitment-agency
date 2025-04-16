@@ -1,26 +1,33 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="nl">
 <head>
-  <title>Virtueel AI Rekruteringbureau</title>
+    <meta charset="UTF-8">
+    <title>AI Rekrutering Bureau</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f4f4f4; color: #333; }
+        h1 { color: #2c3e50; }
+        form { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-bottom: 30px; }
+        input[type=text] { width: 45%; padding: 10px; margin: 5px 0; }
+        button { padding: 10px 20px; background: #2ecc71; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        img { margin-top: 20px; max-width: 300px; }
+        pre { background: #fff; padding: 15px; border-radius: 5px; overflow: auto; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+    </style>
 </head>
 <body>
-  <h1>Start een AI-rekruteringscampagne</h1>
-  <form method="POST">
-    <label>Functietitel:</label><br>
-    <input type="text" name="functie" required><br><br>
-    <label>Locatie:</label><br>
-    <input type="text" name="locatie" required><br><br>
-    <button type="submit">Start Campagne</button>
-  </form>
+    <h1>AI Rekrutering Bureau</h1>
+    <form method="post">
+        <label>Functie:</label><br>
+        <input type="text" name="functie" required placeholder="bv. Kraanmachinist"><br><br>
+        <label>Locatie:</label><br>
+        <input type="text" name="locatie" required placeholder="bv. Brugge"><br><br>
+        <button type="submit">Genereer Campagne</button>
+    </form>
 
-  {% if result %}
-    <h2>Resultaat</h2>
-    <pre>{{ result }}</pre>
-  {% endif %}
-
-  {% if image_url %}
-    <h2>Gegenereerde Visual</h2>
-    <img src="{{ image_url }}" alt="Visual voor vacature">
-  {% endif %}
+    {% if result %}
+        <h2>Resultaat van de AI-agenten:</h2>
+        <pre>{{ result }}</pre>
+        <h3>Visuele Representatie:</h3>
+        <img src="{{ image_url }}" alt="Vacature visual">
+    {% endif %}
 </body>
 </html>
