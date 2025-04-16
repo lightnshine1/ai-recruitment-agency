@@ -3,6 +3,8 @@ openai
 crewai
 langchain
 langchain-community
+langchain-openai
+duckduckgo-search
 requests
 pillow
 python-dotenv
