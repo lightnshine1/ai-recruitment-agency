@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+  <title>Virtueel AI Rekruteringbureau</title>
+</head>
+<body>
+  <h1>Start een AI-rekruteringscampagne</h1>
+  <form method="POST">
+    <label>Functietitel:</label><br>
+    <input type="text" name="functie" required><br><br>
+    <label>Locatie:</label><br>
+    <input type="text" name="locatie" required><br><br>
+    <button type="submit">Start Campagne</button>
+  </form>
+
+  {% if result %}
+    <h2>Resultaat</h2>
+    <pre>{{ result }}</pre>
+  {% endif %}
+
+  {% if image_url %}
+    <h2>Gegenereerde Visual</h2>
+    <img src="{{ image_url }}" alt="Visual voor vacature">
+  {% endif %}
+</body>
+</html>

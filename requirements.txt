@@ -1,0 +1,6 @@
+Flask
+openai
+crewai
+langchain
+requests
+pillow
