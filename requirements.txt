@@ -2,8 +2,8 @@ Flask
 crewai
 langchain
 langchain-community
+langchain-huggingface
 huggingface_hub
+python-dotenv
 requests
 pillow
-python-dotenv
-langchain-huggingface
