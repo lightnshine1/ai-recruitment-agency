@@ -4,8 +4,8 @@ from flask import Flask, render_template, request
 import os
 import openai
 from crewai import Crew, Agent, Task
-from langchain.tools import DuckDuckGoSearchRun
-from langchain.llms import OpenAI
+from langchain_community.tools import DuckDuckGoSearchRun
+from langchain_community.llms import OpenAI
 from PIL import Image
 import requests
 import io
