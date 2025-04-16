@@ -3,7 +3,6 @@
 from flask import Flask, render_template, request
 import os
 from crewai import Crew, Agent, Task
-from langchain_community.tools import DuckDuckGoSearchRun
 from langchain_community.llms import HuggingFaceHub
 from PIL import Image
 import requests
@@ -23,8 +22,6 @@ llm = HuggingFaceHub(
     model_kwargs={"temperature": 0.5, "max_new_tokens": 512},
     huggingfacehub_api_token=huggingface_api_key
 )
-
-search_tool = DuckDuckGoSearchRun()
 
 # Functie om een placeholder afbeelding te genereren (geen DALL-E zonder OpenAI)
 def generate_visual(prompt):
