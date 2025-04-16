@@ -1,10 +1,8 @@
 Flask
-openai
 crewai
 langchain
 langchain-community
-langchain-openai
-duckduckgo-search
+huggingface_hub
 requests
 pillow
 python-dotenv
