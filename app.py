@@ -88,27 +88,32 @@ def index():
         # Taken
         job_analysis = Task(
             description=f"Analyseer het profiel van '{jobomschrijving}' en geef aanbevelingen voor targeting.",
-            agent=recruiter
+            agent=recruiter,
+            expected_output="Doelgroepanalyse en wervingsadvies."
         )
 
         write_job_post = Task(
             description=f"Schrijf een krachtige vacaturetekst voor een {jobomschrijving}.",
-            agent=copywriter
+            agent=copywriter,
+            expected_output="Een volledige vacaturetekst die klaar is voor publicatie."
         )
 
         plan_campaign = Task(
             description=f"Maak een plan om de vacature '{jobomschrijving}' te verspreiden via social media, jobboards, enz.",
-            agent=campaign_manager
+            agent=campaign_manager,
+            expected_output="Een concreet en bruikbaar campagneplan."
         )
 
         generate_visual_task = Task(
             description=f"Genereer een visuele representatie van een {jobomschrijving}. Denk aan kantooromgeving, professionele sfeer, en wervende uitstraling.",
-            agent=graphic_designer
+            agent=graphic_designer,
+            expected_output="Een visuele prompt of gegenereerde afbeelding."
         )
 
         overview_task = Task(
             description=f"Overzicht van de campagne en optimalisatievoorstellen voor het team.",
-            agent=strategic_director
+            agent=strategic_director,
+            expected_output="Samenvatting van de samenwerking en optimalisatie-ideeën."
         )
 
         # Combineer alles in een crew
