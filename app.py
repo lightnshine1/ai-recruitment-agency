@@ -1,1 +1,1 @@
-<GEKNIPT - zit al in canvas>
+from flask import Flask, render_template, request
