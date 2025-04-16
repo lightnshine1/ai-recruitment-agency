@@ -1,11 +1,10 @@
-# app.py — AI Recruitment Bureau Prototype
+# app.py — AI Recruitment Bureau Prototype (met open-source LLM)
 
 from flask import Flask, render_template, request
 import os
-import openai
 from crewai import Crew, Agent, Task
 from langchain_community.tools import DuckDuckGoSearchRun
-from langchain_community.llms import OpenAI
+from langchain_community.llms import HuggingFaceHub
 from PIL import Image
 import requests
 import io
@@ -17,22 +16,20 @@ load_dotenv()
 # Setup Flask
 app = Flask(__name__)
 
-# Zorg dat je OpenAI API key ingesteld is
-openai.api_key = os.getenv("OPENAI_API_KEY")
+# Configureer HuggingFace LLM (gratis open-source model)
+huggingface_api_key = os.getenv("HUGGINGFACEHUB_API_TOKEN")
+llm = HuggingFaceHub(
+    repo_id="HuggingFaceH4/zephyr-7b-beta",
+    model_kwargs={"temperature": 0.5, "max_new_tokens": 512},
+    huggingfacehub_api_token=huggingface_api_key
+)
 
-# Stel een paar basistools en LLM in
-llm = OpenAI(temperature=0)
 search_tool = DuckDuckGoSearchRun()
 
-# Functie om afbeelding te genereren met DALL·E
+# Functie om een placeholder afbeelding te genereren (geen DALL-E zonder OpenAI)
 def generate_visual(prompt):
-    response = openai.Image.create(
-        prompt=prompt,
-        n=1,
-        size="512x512"
-    )
-    image_url = response['data'][0]['url']
-    return image_url
+    # Alternatief: toon een standaard placeholder image
+    return "https://via.placeholder.com/512x512.png?text=AI+Visual"
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
