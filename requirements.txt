@@ -2,5 +2,7 @@ Flask
 openai
 crewai
 langchain
+langchain-community
 requests
 pillow
+python-dotenv
